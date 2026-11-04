@@ -22,7 +22,7 @@ CSRFProtect(app)
 TEAM = [
     {"name": "DEADY", "handle": "1deady", "url": "https://www.tiktok.com/@1deady", "number": "01"},
     {"name": "KUZEY", "handle": "lifevolkxey", "url": "https://www.tiktok.com/@lifevolkxey", "number": "02"},
-    {"name": "APOLON", "handle": "dream_lord11", "url": "https://www.tiktok.com/@dream_lord11", "number": "03"},
+    {"name": "APOLON", "handle": "dream_lord12", "url": "https://www.tiktok.com/@dream_lord12", "number": "03"},
     {"name": "SHAZDY", "handle": "shazdyweb", "url": "https://www.tiktok.com/@shazdyweb", "number": "04"},
 ]
 
