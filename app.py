@@ -79,6 +79,9 @@ def init_db():
     conn.commit()
     conn.close()
 
+init_db()
+
+
 def current_user():
     if "user" not in g:
         uid = session.get("user_id")
