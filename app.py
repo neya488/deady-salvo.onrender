@@ -76,6 +76,12 @@ def init_db():
         created_at TEXT NOT NULL
     );
     """)
+    admin_username = os.environ.get("ADMIN_USERNAME", "").strip()
+    if admin_username:
+        conn.execute(
+            "UPDATE users SET is_admin = 1 WHERE username = ?",
+            (admin_username,)
+        )
     conn.commit()
     conn.close()
 
