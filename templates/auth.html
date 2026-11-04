@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Kayıt' if mode == 'register' else 'Giriş' }} | DEADY SALVO{% endblock %}
+{% block content %}
+<section class="auth-wrap">
+ <form class="panel auth" method="post">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="eyebrow">{{ 'JOIN THE CREW' if mode == 'register' else 'MEMBER ACCESS' }}</div>
+  <h1>{{ 'Hesap oluştur' if mode == 'register' else 'Tekrar hoş geldin' }}<span class="red">.</span></h1>
+  <label for="username">Kullanıcı adı</label><input id="username" name="username" minlength="3" maxlength="24" required autocomplete="username">
+  <label for="password">Şifre</label><input id="password" name="password" type="password" minlength="10" required autocomplete="{{ 'new-password' if mode == 'register' else 'current-password' }}">
+  {% if mode == 'register' %}<small class="muted">En az 10 karakter kullan. Şifreni kimseyle paylaşma.</small>{% endif %}
+  <button class="button primary full">{{ 'Hesap oluştur →' if mode == 'register' else 'Giriş yap →' }}</button>
+  <p class="muted center">{% if mode == 'register' %}Zaten hesabın var mı? <a href="{{ url_for('login') }}">Giriş yap</a>{% else %}Hesabın yok mu? <a href="{{ url_for('register') }}">Katıl</a>{% endif %}</p>
+ </form>
+</section>
+{% endblock %}

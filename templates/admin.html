@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Yönetim | DEADY SALVO{% endblock %}
+{% block content %}
+<section class="section wrap">
+<div class="eyebrow">CONTROL ROOM</div><h1 class="page-title">Yönetim paneli<span class="red">.</span></h1>
+<form class="panel postform" method="post">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><h2>Yeni duyuru</h2>
+<label>Başlık</label><input name="title" maxlength="100" required>
+<label>Açıklama</label><textarea name="body" maxlength="1000" required></textarea>
+<button class="button primary">Duyuruyu yayınla</button>
+</form>
+<div class="admin-grid">
+<div class="panel"><h2>Üyeler</h2>{% for u in users %}<p class="adminrow">{{ u.username }} {% if u.is_admin %}<span class="tag">ADMIN</span>{% endif %}</p>{% else %}<p class="muted">Üye yok.</p>{% endfor %}</div>
+<div class="panel"><h2>Son gönderiler</h2>{% for p in posts %}<div class="adminrow"><span><b>{{ p.username }}</b>: {{ p.body[:80] }}</span><form method="post" action="{{ url_for('admin_delete_post', post_id=p.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="danger">Sil</button></form></div>{% else %}<p class="muted">Gönderi yok.</p>{% endfor %}</div>
+</div>
+<div class="panel"><h2>Duyurular</h2>{% for a in announcements %}<div class="adminrow"><span>{{ a.title }}</span><form method="post" action="{{ url_for('admin_delete_announcement', announcement_id=a.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="danger">Sil</button></form></div>{% else %}<p class="muted">Duyuru yok.</p>{% endfor %}</div>
+</section>
+{% endblock %}

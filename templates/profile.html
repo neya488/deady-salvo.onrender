@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Profil | DEADY SALVO{% endblock %}
+{% block content %}
+<section class="auth-wrap"><form class="panel auth" method="post">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<div class="eyebrow">MEMBER PROFILE</div><h1>{{ user.username }}<span class="red">.</span></h1>
+<label>Kullanıcı adı</label><input value="{{ user.username }}" disabled>
+<label for="bio">Hakkımda</label><textarea id="bio" name="bio" maxlength="180" placeholder="Kendinden bahset...">{{ user.bio }}</textarea>
+<button class="button primary full">Profili güncelle</button>
+</form></section>
+{% endblock %}

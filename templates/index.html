@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}DEADY SALVO | Resmî Platform{% endblock %}
+{% block content %}
+<section class="hero wrap">
+  <div class="hero-glow"></div>
+  <div class="eyebrow"><span class="pulse"></span> OFFICIAL COMMUNITY PLATFORM</div>
+  <h1>WELCOME TO<br><span>DEADY SALVO</span></h1>
+  <p class="hero-sub">Kendi dünyamıza hoş geldin.</p>
+  <p class="muted hero-copy">Güç, sadakat ve birlik. Ekibimizi keşfet, topluluğa katıl ve hikâyenin bir parçası ol.</p>
+  <div class="actions"><a class="button primary" href="{{ url_for('community') }}">Topluluğa gir <b>→</b></a><a class="button ghost" href="#team">Ekibi tanı</a></div>
+  <div class="hero-bottom"><span>EST. 2026</span><span>NO LIMITS · ONE TEAM</span><span>DS / 001</span></div>
+</section>
+<section class="section wrap" id="team">
+  <div class="section-head"><div><div class="eyebrow">THE CREW</div><h2>Ekibimiz<span class="red">.</span></h2></div><p class="muted">Dört isim. Tek ekip.</p></div>
+  <div class="team-grid">
+  {% for member in team %}
+    <article class="member-card"><div class="member-no">{{ member.number }}</div><div class="member-mark">{{ member.name[0] }}</div><h3>{{ member.name }}</h3><p>@{{ member.handle }}</p><a href="{{ member.url }}" target="_blank" rel="noopener noreferrer">TikTok profilini aç ↗</a></article>
+  {% endfor %}
+  </div>
+</section>
+<section class="section announcement-section">
+ <div class="wrap">
+  <div class="section-head"><div><div class="eyebrow">LATEST TRANSMISSION</div><h2>Duyurular<span class="red">.</span></h2></div></div>
+  {% if announcements %}
+   <div class="announcement-grid">{% for a in announcements %}<article class="panel"><div class="eyebrow">DUYURU / {{ a.id }}</div><h3>{{ a.title }}</h3><p>{{ a.body }}</p></article>{% endfor %}</div>
+  {% else %}<div class="panel empty"><h3>İlk duyuru yakında.</h3><p>Gelişmeler burada paylaşılacak.</p></div>{% endif %}
+ </div>
+</section>
+<section class="join wrap"><div><div class="eyebrow">YOUR MOVE</div><h2>Topluluğa katıl.</h2><p class="muted">Hesabını oluştur, gönderilerini paylaş ve ekiple tanış.</p></div><a class="button primary" href="{{ url_for('register') }}">Şimdi katıl →</a></section>
+{% endblock %}

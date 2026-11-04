@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: deady-salvo
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "1"
+      - key: DATABASE_PATH
+        value: /var/data/deady_salvo.db
+    disk:
+      name: deady-salvo-data
+      mountPath: /var/data
+      sizeGB: 1

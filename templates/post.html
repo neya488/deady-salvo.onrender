@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Gönderi | DEADY SALVO{% endblock %}
+{% block content %}
+<section class="section wrap narrow">
+<a class="back" href="{{ url_for('community') }}">← Topluluğa dön</a>
+<article class="panel post"><div class="postmeta"><strong>{{ post.username }}</strong><span>{{ post.created_at[:16].replace('T',' ') }} UTC</span></div><p class="postbody">{{ post.body }}</p><div class="postactions">♥ {{ post.like_count }}</div></article>
+<h2 class="subheading">Yorumlar</h2>
+{% if current_user %}<form class="panel postform" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><textarea name="body" maxlength="500" required placeholder="Yorum yaz..."></textarea><div class="formbottom"><small class="muted">En fazla 500 karakter</small><button class="button primary">Yorum yap</button></div></form>{% endif %}
+{% for c in comments %}<div class="panel comment"><strong>{{ c.username }}</strong><p>{{ c.body }}</p></div>{% else %}<p class="muted">Henüz yorum yok.</p>{% endfor %}
+</section>
+{% endblock %}

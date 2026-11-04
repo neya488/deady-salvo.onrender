@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Topluluk | DEADY SALVO{% endblock %}
+{% block content %}
+<section class="section wrap">
+ <div class="eyebrow">COMMUNITY FEED</div><h1 class="page-title">Topluluk<span class="red">.</span></h1>
+ <p class="muted">Düşüncelerini paylaş. Saygılı ve güvenli bir topluluk oluşturalım.</p>
+ {% if current_user %}
+ <form class="panel postform" method="post" action="{{ url_for('create_post') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <label for="body">Yeni gönderi</label><textarea id="body" name="body" maxlength="1000" required placeholder="Aklından neler geçiyor?"></textarea>
+  <div class="formbottom"><small class="muted">En fazla 1000 karakter</small><button class="button primary">Paylaş →</button></div>
+ </form>
+ {% else %}
+ <div class="panel notice">Gönderi paylaşmak ve beğenmek için <a href="{{ url_for('login') }}">giriş yap</a> veya <a href="{{ url_for('register') }}">hesap oluştur</a>.</div>
+ {% endif %}
+ <div class="feed">
+ {% for post in posts %}
+  <article class="panel post">
+   <div class="postmeta"><strong>{{ post.username }}</strong><span>{{ post.created_at[:16].replace('T',' ') }} UTC</span></div>
+   <p class="postbody">{{ post.body }}</p>
+   <div class="postactions">
+    {% if current_user %}<form method="post" action="{{ url_for('like', post_id=post.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="textbutton">{{ '♥' if post.id in liked else '♡' }} {{ post.like_count }}</button></form>{% else %}<span>♡ {{ post.like_count }}</span>{% endif %}
+    <a href="{{ url_for('post_detail', post_id=post.id) }}">Yorumlar · {{ post.comment_count }}</a>
+   </div>
+  </article>
+ {% else %}<div class="panel empty"><h3>Henüz gönderi yok.</h3><p>İlk paylaşımı sen yapabilirsin.</p></div>{% endfor %}
+ </div>
+</section>
+{% endblock %}
