@@ -3,6 +3,7 @@
 {% block content %}
 <section class="hero wrap">
   <div class="hero-glow"></div>
+  <img class="hero-logo" src="{{ url_for('static', filename='deady-salvo-logo.png') }}" alt="DEADY SALVO logosu">
   <div class="eyebrow"><span class="pulse"></span> OFFICIAL COMMUNITY PLATFORM</div>
   <h1>WELCOME TO<br><span>DEADY SALVO</span></h1>
   <p class="hero-sub">Kendi dünyamıza hoş geldin.</p>
@@ -27,4 +28,29 @@
  </div>
 </section>
 <section class="join wrap"><div><div class="eyebrow">YOUR MOVE</div><h2>Topluluğa katıl.</h2><p class="muted">Hesabını oluştur, gönderilerini paylaş ve ekiple tanış.</p></div><a class="button primary" href="{{ url_for('register') }}">Şimdi katıl →</a></section>
+
+<section class="contact-section" id="contact">
+  <div class="wrap contact-wrap">
+    <div class="contact-heading">
+      <div class="eyebrow">◆ OFFICIAL CONTACT ◆</div>
+      <h2>İLETİŞİM<span class="red">.</span></h2>
+      <p>Her türlü hizmet, iş birliği ve sorularınız için bize ulaşabilirsiniz.</p>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-card whatsapp" href="https://wa.me/905515072738" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp üzerinden iletişim">
+        <span class="contact-icon">◉</span><span class="contact-name">WHATSAPP</span>
+        <span class="contact-desc">Hızlı ve doğrudan iletişim</span><span class="contact-action">BİZE ULAŞ <b>↗</b></span>
+      </a>
+      <a class="contact-card telegram" href="https://t.me/dertvar" target="_blank" rel="noopener noreferrer" aria-label="Telegram profilini aç">
+        <span class="contact-icon">➤</span><span class="contact-name">TELEGRAM</span>
+        <span class="contact-desc">Güncel duyurular ve destek</span><span class="contact-action">BİZE KATIL <b>↗</b></span>
+      </a>
+      <a class="contact-card tiktok" href="https://www.tiktok.com/@1deady" target="_blank" rel="noopener noreferrer" aria-label="TikTok profilini aç">
+        <span class="contact-icon">♪</span><span class="contact-name">TIKTOK</span>
+        <span class="contact-desc">Bizi sosyal medyada takip edin</span><span class="contact-action">TAKİP ET <b>↗</b></span>
+      </a>
+    </div>
+    <div class="contact-motto">GÜÇ <i>✦</i> SADAKAT <i>✦</i> BİRLİK</div>
+  </div>
+</section>
 {% endblock %}
