@@ -24,6 +24,7 @@ TEAM = [
     {"name": "KUZEY", "handle": "lifevolkxey", "url": "https://www.tiktok.com/@lifevolkxey", "number": "02"},
     {"name": "APOLON", "handle": "dream_lord12", "url": "https://www.tiktok.com/@dream_lord12", "number": "03"},
     {"name": "SHAZDY", "handle": "shazdyweb", "url": "https://www.tiktok.com/@shazdyweb", "number": "04"},
+    {"name": "WIRZUHI", "handle": "wrxemir", "url": "https://www.tiktok.com/@wrxemir", "number": "05"},
 ]
 
 def db():
